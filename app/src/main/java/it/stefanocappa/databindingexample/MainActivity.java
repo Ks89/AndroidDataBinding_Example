@@ -98,6 +98,8 @@ public class MainActivity extends AppCompatActivity {
                     return Tab1Fragment.newInstance();
                 case 1:
                     return Tab2Fragment.newInstance();
+                case 2:
+                    return Tab3Fragment.newInstance();
                 default:
                     return Tab1Fragment.newInstance();
             }
@@ -106,20 +108,12 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 3;
+            return 5;
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
-            switch (position) {
-                case 0:
-                    return "TAB 1";
-                case 1:
-                    return "TAB 2";
-                case 2:
-                    return "TAB 3";
-            }
-            return null;
+            return "TAB " + position;
         }
     }
 }

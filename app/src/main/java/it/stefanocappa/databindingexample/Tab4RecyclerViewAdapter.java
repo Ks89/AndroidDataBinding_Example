@@ -49,7 +49,7 @@ public class Tab4RecyclerViewAdapter extends RecyclerView.Adapter<Tab4RecyclerVi
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         // Create a new view.
         View v = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.tab2cardview, viewGroup, false);
+                .inflate(R.layout.tab4cardview, viewGroup, false);
         return new ViewHolder(v);
     }
 

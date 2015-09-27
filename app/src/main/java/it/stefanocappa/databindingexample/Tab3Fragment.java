@@ -14,34 +14,33 @@ import java.util.Random;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import it.stefanocappa.databindingexample.databinding.Tab2FragmentBinding;
 
 /**
- * Binding data with a call to static class, an example of observable and importing classes in <data></data>
+ * Tha same of Tab2, but with a custom Binding class name
  */
-public class Tab2Fragment extends Fragment {
+public class Tab3Fragment extends Fragment {
 
     @Bind(R.id.randomButton)
     Button randomButton;
 
     private User2 user;
 
-    public static Tab2Fragment newInstance() {
-        return new Tab2Fragment();
+    public static Tab3Fragment newInstance() {
+        return new Tab3Fragment();
     }
 
-    public Tab2Fragment() {
+    public Tab3Fragment() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.tab2_fragment, container, false);
+        View view = inflater.inflate(R.layout.tab3_fragment, container, false);
 
         ButterKnife.bind(this, view);
 
         //FragmentMainBinding is the layout name without "-" and in Pascal Style. With at the end the word "Binding"
-        Tab2FragmentBinding binding = DataBindingUtil.bind(view);
+        it.stefanocappa.databindingexample.CustomBindingNameTab3 binding = DataBindingUtil.bind(view);
 
         user = new User2("FirstName", "LastName", false);
         user.professor.set(new Random().nextBoolean());
