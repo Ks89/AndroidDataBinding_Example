@@ -25,7 +25,6 @@ public class Tab2Fragment extends Fragment {
     Button randomButton;
 
     private User2 user;
-    private Tab2FragmentBinding binding;
 
     public static Tab2Fragment newInstance() {
         return new Tab2Fragment();
@@ -42,7 +41,7 @@ public class Tab2Fragment extends Fragment {
         ButterKnife.bind(this, view);
 
         //FragmentMainBinding is the layout name without "-" and in Pascal Style. With at the end the word "Binding"
-        binding = DataBindingUtil.bind(view);
+        Tab2FragmentBinding binding = DataBindingUtil.bind(view);
 
         user = new User2("FirstName", "LastName", false);
         user.professor.set(new Random().nextBoolean());
