@@ -15,13 +15,13 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import lombok.Getter;
 
-public class Tab4RecyclerViewAdapter extends RecyclerView.Adapter<Tab4RecyclerViewAdapter.ViewHolder> {
+public class TabXRecyclerViewAdapter extends RecyclerView.Adapter<TabXRecyclerViewAdapter.ViewHolder> {
     private ItemClickListener itemClickListener;
 
     @Getter
     private List<String> list;
 
-    public Tab4RecyclerViewAdapter(@NonNull ItemClickListener itemClickListener) {
+    public TabXRecyclerViewAdapter(@NonNull ItemClickListener itemClickListener) {
         this.itemClickListener = itemClickListener;
         setHasStableIds(true);
         list = new ArrayList<>();
@@ -49,7 +49,7 @@ public class Tab4RecyclerViewAdapter extends RecyclerView.Adapter<Tab4RecyclerVi
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         // Create a new view.
         View v = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.tab4cardview, viewGroup, false);
+                .inflate(R.layout.tabx__cardview, viewGroup, false);
         return new ViewHolder(v);
     }
 

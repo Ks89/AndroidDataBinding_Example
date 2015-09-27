@@ -2,31 +2,28 @@ package it.stefanocappa.databindingexample;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
+import java.util.Random;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import it.stefanocappa.databindingexample.databinding.Tab2FragmentBinding;
-import lombok.Getter;
+import butterknife.OnClick;
 
 /**
- * Binding data for recycler view
+ * Like Tab3 but with an example of java operators in layout
  */
-public class Tab4Fragment extends Fragment implements Tab4RecyclerViewAdapter.ItemClickListener {
+public class Tab4Fragment extends Fragment {
 
+    @Bind(R.id.randomButton)
+    Button randomButton;
 
-    @Bind(R.id.recyclerViewtab2)
-    RecyclerView recyclerViewtab2;
-
-    @Getter
-    private Tab4RecyclerViewAdapter newAdapter;
+    private User4 user;
 
     public static Tab4Fragment newInstance() {
         return new Tab4Fragment();
@@ -42,32 +39,29 @@ public class Tab4Fragment extends Fragment implements Tab4RecyclerViewAdapter.It
 
         ButterKnife.bind(this, view);
 
+        //FragmentMainBinding is the layout name without "-" and in Pascal Style. With at the end the word "Binding"
+        it.stefanocappa.databindingexample.CustomBindingNameTab4 binding = DataBindingUtil.bind(view);
+
+        user = new User4("FirstName", "LastName", false);
+        user.professor.set(new Random().nextBoolean());
+        binding.setUser(user);
+
+
         return view;
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-
         ButterKnife.unbind(this);
     }
 
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-        recyclerViewtab2.setLayoutManager(new LinearLayoutManager(this.getActivity(), LinearLayoutManager.VERTICAL, false));
-        recyclerViewtab2.setHasFixedSize(true);
-        newAdapter = new Tab4RecyclerViewAdapter(this);
-        recyclerViewtab2.setAdapter(newAdapter);
-        recyclerViewtab2.setItemAnimator(new DefaultItemAnimator());
-
-
-    }
-
-    @Override
-    public void clickedTab2Item(String element) {
-
+    @OnClick(R.id.randomButton)
+    public void onClickRandom(View v) {
+        boolean newBool = new Random().nextBoolean();
+        Log.d("Tab2", "newBool is " + newBool);
+        user.professor.set(newBool);
+        //here it isn't necessary to bind the updated object (binding.setUser(user)), because i'm using an
+        //ObservableBoolean in the model
     }
 }

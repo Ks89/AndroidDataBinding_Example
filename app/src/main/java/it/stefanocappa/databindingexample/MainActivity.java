@@ -100,6 +100,8 @@ public class MainActivity extends AppCompatActivity {
                     return Tab2Fragment.newInstance();
                 case 2:
                     return Tab3Fragment.newInstance();
+                case 3:
+                    return Tab4Fragment.newInstance();
                 default:
                     return Tab1Fragment.newInstance();
             }
@@ -108,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 5;
+            return 6;
         }
 
         @Override

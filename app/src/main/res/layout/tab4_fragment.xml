@@ -2,8 +2,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
+    <data class="it.stefanocappa.databindingexample.CustomBindingNameTab4">
 
+        <import type="android.view.View"/>
+
+        <import type="it.stefanocappa.databindingexample.MyStringUtils"/>
+
+        <variable
+            name="user"
+            type="it.stefanocappa.databindingexample.User4"/>
     </data>
 
     <RelativeLayout
@@ -15,13 +22,53 @@
         android:paddingTop="@dimen/activity_vertical_margin"
         tools:context=".MainActivityFragment">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerViewtab2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="2dp"
-            android:layout_marginRight="2dp"
-            android:layout_marginTop="6dp"/>
+
+        <TextView
+            android:id="@+id/usernameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{MyStringUtils.capitalize(user.firstName)}"/>
+
+        <TextView
+            android:id="@+id/userlastnameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/usernameTextView"
+            android:layout_marginTop="20dp"
+            android:text="@{MyStringUtils.capitalize(user.lastName)}"/>
+
+        <!--
+            android:text=@{user.firstNameNull ?? "firstNameNull is null. It is OK!"}'
+            is equivalent to:
+            android:text=@{user.firstNameNull != null ? user.firstNameNull : "firstNameNull is null. It is OK!"}'
+        -->
+        <TextView
+            android:id="@+id/nullCoalescingExampleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/userlastnameTextView"
+            android:layout_marginTop="20dp"
+            android:text='@{user.firstNameNull ?? "firstNameNull is null. It is OK!"}'/>
+
+        <TextView
+            android:id="@+id/isProfessorTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nullCoalescingExampleTextView"
+            android:layout_marginTop="20dp"
+            android:text="Professor"
+            android:visibility="@{user.professor ? View.VISIBLE : View.GONE}"/>
+
+        <!-- You can't use this, super and new in layout with data binding-->
+        <!-- If you want to write String in @{} you should use "" for String and '' for the outer ('@{""}') -->
+
+        <Button
+            android:id="@+id/randomButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/isProfessorTextView"
+            android:layout_marginTop="20dp"
+            android:text='@{"Random professor bool tab" + String.valueOf(4)}'/>
 
     </RelativeLayout>
 </layout>
