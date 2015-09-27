@@ -10,7 +10,7 @@
 
         <variable
             name="user"
-            type="it.stefanocappa.databindingexample.User"/>
+            type="it.stefanocappa.databindingexample.User1"/>
     </data>
 
     <RelativeLayout
@@ -23,17 +23,17 @@
         tools:context=".MainActivityFragment">
 
         <TextView
-            android:id="@+id/userTextView"
+            android:id="@+id/usernameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="@{user.firstNameClicked ? handlers.onClickFirstName : handlers.onClickLastName}"
             android:text="@{user.firstName}"/>
 
         <TextView
-            android:id="@+id/enemyTextView"
+            android:id="@+id/userlastnameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/userTextView"
+            android:layout_below="@+id/usernameTextView"
             android:layout_marginTop="20dp"
             android:onClick="@{!user.firstNameClicked ? handlers.onClickFirstName : handlers.onClickLastName}"
             android:text="@{user.lastName}"/>
