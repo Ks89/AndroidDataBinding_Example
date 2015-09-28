@@ -68,7 +68,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/isProfessorTextView"
             android:layout_marginTop="20dp"
-            android:text='@{"Random professor bool tab" + String.valueOf(4)}'/>
+            android:text='@{"Random professor bool tab" + String.valueOf(3)}'/>
 
     </RelativeLayout>
 </layout>

@@ -56,9 +56,12 @@ public class MainActivity extends AppCompatActivity {
 
         slidingTabs.setTabMode(TabLayout.MODE_SCROLLABLE);
 
-        slidingTabs.setTabTextColors(getResources().getColorStateList(R.color.cardview_light_background));
+        for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
+            slidingTabs.addTab(slidingTabs.newTab().setText(mSectionsPagerAdapter.getPageTitle(i)));
+        }
 
         slidingTabs.setupWithViewPager(mViewPager);
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
