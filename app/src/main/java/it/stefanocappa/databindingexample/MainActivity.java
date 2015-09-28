@@ -3,6 +3,7 @@ package it.stefanocappa.databindingexample;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -13,7 +14,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity {
+
+    @Bind(R.id.sliding_tabs)
+    TabLayout slidingTabs;
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -35,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        ButterKnife.bind(this);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         // Create the adapter that will return a fragment for each of the three
@@ -45,6 +54,11 @@ public class MainActivity extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
+        slidingTabs.setTabMode(TabLayout.MODE_SCROLLABLE);
+
+        slidingTabs.setTabTextColors(getResources().getColorStateList(R.color.cardview_light_background));
+
+        slidingTabs.setupWithViewPager(mViewPager);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -102,6 +116,8 @@ public class MainActivity extends AppCompatActivity {
                     return Tab3Fragment.newInstance();
                 case 3:
                     return Tab4Fragment.newInstance();
+                case 4:
+                    return Tab5Fragment.newInstance();
                 default:
                     return Tab1Fragment.newInstance();
             }
@@ -110,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 6;
+            return 10;
         }
 
         @Override
