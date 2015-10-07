@@ -13,11 +13,11 @@
 
         <variable
             name="list"
-            type="ObservableList&lt;Object>" />
+            type="ObservableList&lt;String>" />
 
         <variable
             name="map"
-            type="ObservableMap&lt;String, Object>" />
+            type="ObservableMap&lt;String, String>" />
 
         <variable
             name="index"
