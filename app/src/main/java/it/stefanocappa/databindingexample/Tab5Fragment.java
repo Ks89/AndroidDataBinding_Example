@@ -79,7 +79,7 @@ public class Tab5Fragment extends Fragment {
     @OnClick(R.id.randomButton)
     public void onClickRandom(View v) {
         boolean newBool = new Random().nextBoolean();
-        Log.d("Tab2", "newBool is " + newBool);
+        Log.d("Tab5", "newBool is " + newBool);
         user.professor.set(newBool);
         //here it isn't necessary to bind the updated object (binding.setUser(user)), because i'm using an
         //ObservableBoolean in the model

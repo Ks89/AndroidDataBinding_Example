@@ -121,6 +121,12 @@ public class MainActivity extends AppCompatActivity {
                     return Tab4Fragment.newInstance();
                 case 4:
                     return Tab5Fragment.newInstance();
+                case 5:
+                    return Tab6Fragment.newInstance();
+                case 6:
+                    return Tab7Fragment.newInstance();
+                case 7:
+                    return Tab8Fragment.newInstance();
                 default:
                     return Tab1Fragment.newInstance();
             }
