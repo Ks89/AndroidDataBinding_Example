@@ -1,5 +1,8 @@
 # AndroidDataBinding_Example
 
+Some examples of Android Data Binding
+
+###License
 
    Copyright 2015 Stefano Cappa
 
